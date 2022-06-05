@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {} from "@mui/material";
-import {SearchRounded, ShoppingBagRounded } from '@mui/icons-material';
+import {ShoppingBagRounded } from '@mui/icons-material';
+import { useStateValue } from "./StateProvider";
 
 function Header() {
+  const [{ bag }] = useStateValue();
 
   return ( 
   <header>
-      <img src='https://shorturl.ae/I41u5' alt='' className='logo'/>
-      <img src='https://drive.google.com/file/d/1AYniTvnKfr--m4C8uK-aCYt41SwbcS5Z/view?usp=sharing' />
+      <img src='https://i.hizliresim.com/33qbxdt.png' alt='' className='logo'/>
 
-      <h3>Nemeksepeti</h3>
 
       <div className="shoppingBag">
         <ShoppingBagRounded className="bag" />
-        <div className="bagContent">
-        <p>2 </p>
+        <div className={`${!bag ? "noBagItem" : "bag_content"}`}>
+        <p>{bag ? bag.length : "0"} </p>
         </div>        
       </div>
 

@@ -6,11 +6,15 @@ import { MenuItems, Items } from "./Components/Data";
 import { useEffect, useState } from "react";
 import FoodItemCard from "./Components/FoodItemCard";
 import BagItem from "./Components/BagItem";
+import { useStateValue } from "./Components/StateProvider";
 
 function App() {
   const [isMainData, setMainData] = useState(
     Items.filter((element) => element.itemId === "salata1")
   );
+
+  const [{ bag, total }, dispatch] = useStateValue();
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     const menuCards = document
@@ -23,7 +27,7 @@ function App() {
     }
 
     menuCards.forEach((n) => n.addEventListener("click", setFoodCardActive));
-  }, [isMainData]);
+  }, [isMainData,bag,total,totalPrice]);
 
   const setData = (itemId) => {
     setMainData(Items.filter((element) => element.itemId === itemId));
@@ -39,7 +43,7 @@ function App() {
             <SubMenuContainer name={"Yemek Çeşitleri"} />
           </div>
 
-          <div className="rowContainer" >
+          <div className="rowContainer">
             {MenuItems &&
               MenuItems.map((data) => (
                 <div key={data.id} onClick={() => setData(data.itemId)}>
@@ -52,7 +56,7 @@ function App() {
               ))}
           </div>
 
-          <div className='dishCon'>
+          <div className="dishCon">
             <h2 className="dishConContent">Yemekler</h2>
           </div>
 
@@ -61,7 +65,7 @@ function App() {
               isMainData.map((data) => (
                 <FoodItemCard
                   key={data.id}
-                  itemId={data.id}
+                  id={data.id}
                   imgSrc={data.imgSrc}
                   name={data.name}
                   price={data.price}
@@ -69,38 +73,49 @@ function App() {
               ))}
           </div>
         </div>
-
-
         <div className="buyingMenu">
           <div>
-            <h3>burak</h3>
+              
           </div>
+
+          {!bag ? (
+            <div className="addSomeItem">
+              <h2 className="emptyBagh2">Sepetiniz Boş</h2>
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2FemptyCart.png?alt=media&token=50b733d4-cdd9-4025-bffe-8efa4066ca24"
+                alt=""
+                className="emptyBag"
+              />
+            </div>
+          ) :(
 
           <div className="bagCheckOut">
             <div className="bagContainer">
               <SubMenuContainer name={"Siparişiniz:"} />
               <div className="itemsBag">
-                
-                  <BagItem
-                  name={"data.name"}
-                  imgSrc={"data.imgSrc"}
-                  qty={"data.qty"}
-                  price={"data.price"}
-                />
-
-              
+                {bag &&
+                  bag.map((data) => (
+                    <BagItem
+                      name={data.name}
+                      imgSrc={data.imgSrc}
+                      qty={data.qty}
+                      price={data.price}
+                      id={data.id}
+                      key={Math.random()}
+                    />
+                  ))}
               </div>
             </div>
 
             <div className="toplamFiyat">
               <h3>Toplam Fiyat:</h3>
               <p>
-                <span>₺120</span>
+                <span>₺</span>{total}
               </p>
             </div>
 
             <button className="tamamla">Siparişi Tamamla</button>
-          </div>
+          </div>)}
         </div>
       </main>
     </div>

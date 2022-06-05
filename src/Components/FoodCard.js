@@ -16,4 +16,4 @@ function FoodCard({imgSrc,name,isActive}) {
   )
 }
 
-export default FoodCard
+export default FoodCard;
