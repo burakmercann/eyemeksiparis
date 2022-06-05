@@ -1,26 +1,15 @@
 import React, { useEffect } from 'react';
 import {} from "@mui/material";
-import { BarChart, SearchRounded, ShoppingBagRounded } from '@mui/icons-material';
+import {SearchRounded, ShoppingBagRounded } from '@mui/icons-material';
 
 function Header() {
-  
-  /*useEffect(()=>{
-    const  menuIcon= document.querySelector(".menuIcon");
-
-    menuIcon.addEventListener('click', ()=> {
-      document.querySelector('buyingMenu').classList.toggle('active')
-    })
-
-  },[])*/
 
   return ( 
   <header>
-      <img src='https://shorturl.ae/TZkKY' alt='' className='logo'/>
+      <img src='https://shorturl.ae/I41u5' alt='' className='logo'/>
+      <img src='https://drive.google.com/file/d/1AYniTvnKfr--m4C8uK-aCYt41SwbcS5Z/view?usp=sharing' />
 
-      <div className="inputBox">
-        <SearchRounded className="searchIcon"/>
-        <input type="text" placeholder='Arama'/>
-      </div>
+      <h3>Nemeksepeti</h3>
 
       <div className="shoppingBag">
         <ShoppingBagRounded className="bag" />
@@ -31,10 +20,6 @@ function Header() {
 
       <div className='profile'>
         <h3 className='name'> Burak Mercan </h3>
-      </div>
-
-      <div className='menu'>
-        <BarChart className='menuIcon'/>
       </div>
       
   </header>

@@ -36,7 +36,7 @@ function App() {
       <main>
         <div className="mainContainer">
           <div className="menuCard">
-            <SubMenuContainer name={"Yemek Çeşidi"} />
+            <SubMenuContainer name={"Yemek Çeşitleri"} />
           </div>
 
           <div className="rowContainer" >
@@ -50,6 +50,10 @@ function App() {
                   />{" "}
                 </div>
               ))}
+          </div>
+
+          <div className='dishCon'>
+            <h2 className="dishConContent">Yemekler</h2>
           </div>
 
           <div className="dishItemContainer">
@@ -66,6 +70,7 @@ function App() {
           </div>
         </div>
 
+
         <div className="buyingMenu">
           <div>
             <h3>burak</h3>
@@ -75,12 +80,15 @@ function App() {
             <div className="bagContainer">
               <SubMenuContainer name={"Siparişiniz:"} />
               <div className="itemsBag">
-                <BagItem
-                  name={"Tabbule"}
-                  imgSrc={"https://shorturl.ae/mukWE"}
-                  qty={"2"}
-                  price={"120"}
+                
+                  <BagItem
+                  name={"data.name"}
+                  imgSrc={"data.imgSrc"}
+                  qty={"data.qty"}
+                  price={"data.price"}
                 />
+
+              
               </div>
             </div>
 
