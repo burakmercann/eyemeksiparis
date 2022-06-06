@@ -4,8 +4,8 @@ import { actionType } from "./reducer";
 import { useStateValue } from "./StateProvider";
 let bagItems = [];
 
-function BagItem({ id, name, imgSrc, price }) {
-  const [qty, setQty] = useState(1);
+function BagItem({ id, name, imgSrc, price, initialQty }) {
+  const [qty, setQty] = useState(initialQty);
   const [itemPrice, setItemPrice] = useState(parseInt(qty) * parseFloat(price));
   const [{ bag, total }, dispatch] = useStateValue();
 
@@ -16,20 +16,36 @@ function BagItem({ id, name, imgSrc, price }) {
 
   const updateQty = (action, id) => {
     if (action == "add") {
-      setQty(qty + 1);
+      addItem(1);
     } else {
       if (qty == 1) {
-        let tempBag = [] //bagItems.filter(x => x.id != id)
-        console.log(tempBag,id)
+        let tempBag = bagItems.filter((x) => x.item.id != id);
         dispatch({
           type: actionType.SET_BAG,
-          bag:[],
+          bag: tempBag,
         });
       } else {
-        setQty(qty - 1);
-        console.log(qty);
+        addItem(-1);
       }
     }
+  };
+
+  const addItem = (val) => {
+    let tmpBeg = [...bag];
+    let itemWithQty;
+    const existing = bag.find((x) => x.item.id == id);
+    itemWithQty = { ...existing, qty: existing.qty + val };
+    tmpBeg = tmpBeg.map((x) => {
+      if (x.item.id == id) {
+        return itemWithQty;
+      }
+      return x;
+    });
+    setQty(itemWithQty.qty);
+    dispatch({
+      type: actionType.SET_BAG,
+      bag: tmpBeg,
+    });
   };
 
   return (

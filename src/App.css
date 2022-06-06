@@ -286,7 +286,7 @@ main{
 .bagContainer{
   width: 100%;
   min-height: 280px;
-  max-height: 475px;
+  max-height: 350px;
   margin-top: 10px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -448,4 +448,57 @@ main{
   font-size: 25px;
   margin-left: 100px;
   display: flex;
+}
+
+.buyingMenu .adiniz{
+  border-width: 4px;
+  border-color: rgb(206, 69, 54);
+  margin-bottom: 5px;
+  border-radius: 5px;
+  align-items: center;
+  background-color: beige;
+  color: rgb(206, 69, 54);
+  height: 25px;
+  width: 300px;
+}
+
+.buyingMenu .soyadiniz{
+  border-width: 4px;
+  border-color: rgb(206, 69, 54);
+  margin-bottom: 5px;
+  border-radius: 5px;
+  align-items: center;
+  background-color: beige;
+  color: rgb(206, 69, 54);
+  height: 25px;
+  width: 300px;
+}
+
+.buyingMenu .email{
+  border-width: 4px;
+  border-color: rgb(206, 69, 54);
+  margin-bottom: 5px;
+  border-radius: 5px;
+  align-items: center;
+  background-color: beige;
+  color: rgb(206, 69, 54);
+  height: 25px;
+  width: 300px;
+}
+
+.buyingMenu .adres{
+  border-width: 4px;
+  border-color: rgb(206, 69, 54);
+  margin-bottom: 5px;
+  border-radius: 5px;
+  align-items: center;
+  background-color: beige;
+  color: rgb(206, 69, 54);
+  height: 25px;
+  width: 300px;
+}
+
+.buyingMenu .giris{
+  color: rgb(206, 69, 54);
+  margin-bottom: 10px;
 }

@@ -3,22 +3,10 @@ import React, { useState, useEffect } from "react";
 import { useStateValue } from "./StateProvider";
 import { actionType } from "./reducer";
 import { Items } from "./Data";
-let bagData = [];
 
-function FoodItemCard({ id,imgSrc, name, price }) {
-  const [isBag, setBag] = useState(null);
+function FoodItemCard({ addToBag, id, imgSrc, name, price }) {
   const [{}, dispatch] = useStateValue();
-  useEffect(() => {
-    if (isBag!= null) {
-      bagData.push(isBag);
-      dispatch({
-        type: actionType.SET_BAG,
-        bag: bagData,
-      });
-      console.log(isBag)
-      setBag(null)
-    }
-  }, [isBag]);
+
   return (
     <div className="ItemCard">
       <div className="imgBox">
@@ -34,7 +22,7 @@ function FoodItemCard({ id,imgSrc, name, price }) {
           <i
             className="addToBag"
             onClick={() => {
-              setBag(Items.find((n) => n.id === id));
+              addToBag();
             }}
           >
             <AddRounded />
