@@ -10,12 +10,17 @@ import { useStateValue } from "./Components/StateProvider";
 import { actionType } from "./Components/reducer";
 
 function App() {
+  const [ad, setAd] = useState("");
+  const [soyad, setSoyad] = useState("");
+  const [adres, setAdres] = useState("");
+  const [eposta, setEposta] = useState("");
+
   const [isMainData, setMainData] = useState(
     Items.filter((element) => element.itemId === "salata1")
   );
 
   const [{ bag, total }, dispatch] = useStateValue();
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPrice] = useState(0);
 
   const addToBag = (id) => {
     let tmpBeg = [...bag];
@@ -60,9 +65,14 @@ function App() {
 
   const purchase = () => {
     let orders = "";
+    let user="";
+    user += "Sayın " + ad + " " + soyad + " siparişiniz alınmıştır.\n" 
+      + adres + " adresine gönderilecektir.\n" + 
+      "Sipariş bilginiz "+ eposta+" adresine gönderilmiştir.";
     bag.forEach((x) => {
       orders += x.item.name + ":  " + x.qty + " x " + x.item.price + "₺\n";
     });
+    alert(user);
     alert(orders);
   };
 
@@ -109,11 +119,35 @@ function App() {
         </div>
         <div className="buyingMenu">
           <div>
-              <h2 className="giris">Kullanıcı Bilgileri</h2>
-              <input type={"text"} className="adiniz" placeholder=" Ad"></input>
-              <input type={"text"} className="soyadiniz" placeholder=" Soyad"></input>
-              <input type={"text"} className="email" placeholder=" E-Mail"></input>
-              <input type={"text"} className="adres" placeholder=" Adres"></input>
+            <h2 className="giris">Kullanıcı Bilgileri</h2>
+            <input
+              type={"text"}
+              className="adiniz"
+              placeholder=" Ad"
+              value={ad}
+              onChange={(e) => setAd(e.target.value)}
+            ></input>
+            <input
+              type={"text"}
+              className="soyadiniz"
+              placeholder=" Soyad"
+              value={soyad}
+              onChange={(e) => setSoyad(e.target.value)}
+            ></input>
+            <input
+              type={"text"}
+              className="email"
+              placeholder=" E-Posta"
+              value={eposta}
+              onChange={(e) => setEposta(e.target.value)}
+            ></input>
+            <input 
+              type={"text"} 
+              className="adres" 
+              placeholder=" Adres"
+              value={adres}
+              onChange={(e) => setAdres(e.target.value)}
+            ></input>
           </div>
 
           {bag.length == 0 ? (
