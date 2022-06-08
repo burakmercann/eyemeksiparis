@@ -7,7 +7,7 @@ let bagItems = [];
 function BagItem({ id, name, imgSrc, price, initialQty }) {
   const [qty, setQty] = useState(initialQty);
   const [itemPrice, setItemPrice] = useState(parseInt(qty) * parseFloat(price));
-  const [{ bag, total }, dispatch] = useStateValue();
+  const [{ bag}, dispatch] = useStateValue();
 
   useEffect(() => {
     bagItems = bag;

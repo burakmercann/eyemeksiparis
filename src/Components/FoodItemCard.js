@@ -1,11 +1,9 @@
 import { AddRounded } from "@mui/icons-material";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useStateValue } from "./StateProvider";
-import { actionType } from "./reducer";
-import { Items } from "./Data";
 
-function FoodItemCard({ addToBag, id, imgSrc, name, price }) {
-  const [{}, dispatch] = useStateValue();
+function FoodItemCard({ addToBag, imgSrc, name, price }) {
+  const [{}] = useStateValue();
 
   return (
     <div className="ItemCard">
