@@ -80,9 +80,14 @@ function App() {
     bag.forEach((x) => {
       orders += x.item.name + ":  " + x.qty + " x " + x.item.price + "₺\n";
     });
+    
     if (ad === "" || soyad === "" || adres === "" || eposta === "") {
       alert("Kullanıcı bilgisi giriniz.");
     } else {
+      dispatch({
+        type: actionType.SET_BAG,
+        bag: [],
+      });
       alert(user);
       alert(orders);
     }
