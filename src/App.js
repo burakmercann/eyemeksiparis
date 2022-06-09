@@ -65,15 +65,27 @@ function App() {
 
   const purchase = () => {
     let orders = "";
-    let user="";
-    user += "Sayın " + ad + " " + soyad + " siparişiniz alınmıştır.\n" 
-      + adres + " adresine gönderilecektir.\n" + 
-      "Sipariş bilginiz "+ eposta+" adresine gönderilmiştir.";
+    let user = "";
+    user +=
+      "Sayın " +
+      ad +
+      " " +
+      soyad +
+      " siparişiniz alınmıştır.\n" +
+      adres +
+      " adresine gönderilecektir.\n" +
+      "Sipariş bilginiz " +
+      eposta +
+      " adresine gönderilmiştir.";
     bag.forEach((x) => {
       orders += x.item.name + ":  " + x.qty + " x " + x.item.price + "₺\n";
     });
-    alert(user);
-    alert(orders);
+    if (ad === "" || soyad === "" || adres === "" || eposta === "") {
+      alert("Kullanıcı bilgisi giriniz.");
+    } else {
+      alert(user);
+      alert(orders);
+    }
   };
 
   return (
@@ -141,9 +153,9 @@ function App() {
               value={eposta}
               onChange={(e) => setEposta(e.target.value)}
             ></input>
-            <input 
-              type={"text"} 
-              className="adres" 
+            <input
+              type={"text"}
+              className="adres"
               placeholder=" Adres"
               value={adres}
               onChange={(e) => setAdres(e.target.value)}
